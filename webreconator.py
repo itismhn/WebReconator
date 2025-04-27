@@ -6,5 +6,18 @@ def show_menu():
 
 def main():
     url=input("Enter the URL (include http/https): ").strip()
+    while True:
+        show_menu()
+        choice = input("Enter your choice: ").strip()
+
+        if choice == "1":
+            #check_security_headers(url)
+            print("1")
+        elif choice == "0":
+            print("Goodbye!")
+            break
+        else:
+            print("[!] Invalid choice, try again.")
+
 if __name__ == "__main__":
     main()

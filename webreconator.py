@@ -1,8 +1,12 @@
 from modules.headersafe import check_security_headers
-
+from modules.verbtampering import http_requests
+from modules.sencheck import check_important_files
 def show_menu():
     print("\n====== WebReconator ======")
     print("1. HeaderSafe (Check Security Headers)")
+    print("2. Verb Tampering (Check HTTP Methods)")
+    print("3. Sensitive Directory Check")
+
     print("0. Exit!")
     print("==========================")
 
@@ -11,9 +15,14 @@ def main():
     while True:
         show_menu()
         choice = input("Enter your choice: ").strip()
-
         if choice == "1":
             check_security_headers(url)
+            break
+        elif choice == "2":
+            http_requests(url)
+            break
+        elif choice == "3":
+            check_important_files(url)
             break
         elif choice == "0":
             print("Goodbye!")

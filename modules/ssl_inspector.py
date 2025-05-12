@@ -58,14 +58,21 @@ def _get_certificate_info(host: str, port: int) -> Dict[str, Any]:
         "extensions": _get_certificate_extensions(cert),
     }
     return cert_info
+def _sanitize_host(url: str) -> str:
+    if url.startswith("https://"):
+        return url[len("https://"):]
+    elif url.startswith("http://"):
+        return url[len("http://"):]
+    return url
 
 def ssl_inspect(host: str, port: int = 443) -> Dict[str, Any]:
-    print(f"[*] Inspecting {host}:{port} ...")
+    clean_host = _sanitize_host(host)
+    print(f"[*] Inspecting {clean_host}:{port} ...")
 
-    cert_info = _get_certificate_info(host, port)
-    ciphers = _get_supported_ciphers(host, port)
+    cert_info = _get_certificate_info(clean_host, port)
+    ciphers = _get_supported_ciphers(clean_host, port)
 
-    print(f"\n[+] Supported Cipher Suites for {host}:{port}:")
+    print(f"\n[+] Supported Cipher Suites for {clean_host}:{port}:")
     for cipher in ciphers:
         print(f"  - {cipher}")
 

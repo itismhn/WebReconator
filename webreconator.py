@@ -1,3 +1,4 @@
+import argparse
 from modules.headersafe import check_security_headers
 from modules.verbtampering import http_requests
 from modules.sencheck import check_important_files
@@ -45,7 +46,14 @@ def interactive_mode():
         print("\n[!] Program interrupted by user (CTRL+C).")
 
 def main():
-    interactive_mode()
+    parser = argparse.ArgumentParser(description="WebReconator - Web Reconnaissance Toolkit")
+    parser.add_argument('-u', '--url', help='Target URL (include http/https) to run all modules')
+    args = parser.parse_args()
+
+    if args.url:
+        print(args.url.strip())
+    else:
+        interactive_mode()
 
 if __name__ == "__main__":
     main()

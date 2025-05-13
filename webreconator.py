@@ -46,13 +46,16 @@ def interactive_mode():
         print("\n[!] Program interrupted by user (CTRL+C).")
 
 def run_all_modules(url):
-    print("\n[+] Running all modules for:", url)
-    check_security_headers(url)
-    http_requests(url)
-    check_important_files(url)
-    whois_data = get_whois_info(url)
-    display_whois_info(whois_data)
-    ssl_inspect(url, 443)
+    try:
+        print("\n[+] Running all modules for:", url)
+        check_security_headers(url)
+        http_requests(url)
+        check_important_files(url)
+        whois_data = get_whois_info(url)
+        display_whois_info(whois_data)
+        ssl_inspect(url, 443)
+    except KeyboardInterrupt:
+        print("\n[!] Program interrupted by user (CTRL+C).")
 
 def main():
     parser = argparse.ArgumentParser(description="WebReconator - Web Reconnaissance Toolkit")

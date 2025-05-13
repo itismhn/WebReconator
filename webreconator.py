@@ -14,9 +14,9 @@ def show_menu():
     print("0. Exit!")
     print("==========================")
 
-def main():
+def interactive_mode():
     try:
-        url=input("Enter the URL (include http/https): ").strip()
+        url = input("Enter the URL (include http/https): ").strip()
         while True:
             show_menu()
             choice = input("Enter your choice: ").strip()
@@ -34,7 +34,7 @@ def main():
                 display_whois_info(whois_data)
                 break
             elif choice == "5":
-                info = ssl_inspect(url, 443)
+                ssl_inspect(url, 443)
                 break
             elif choice == "0":
                 print("Goodbye!")
@@ -43,6 +43,9 @@ def main():
                 print("[!] Invalid choice, try again.")
     except KeyboardInterrupt:
         print("\n[!] Program interrupted by user (CTRL+C).")
+
+def main():
+    interactive_mode()
 
 if __name__ == "__main__":
     main()

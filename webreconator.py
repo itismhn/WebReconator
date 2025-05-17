@@ -11,7 +11,7 @@ def show_menu():
     print("2. Verb Tampering (Check HTTP Methods)")
     print("3. Sensitive Directory Check")
     print("4. Whois the domain")
-    print("5. SSL Insoector (Get All Supported Cipher Suites)")
+    print("5. SSL Inspector (Get All Supported Cipher Suites)")
     print("0. Exit!")
     print("==========================")
 

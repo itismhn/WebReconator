@@ -17,7 +17,7 @@ def show_menu():
 
 def interactive_mode():
     try:
-        url = input("Enter the URL (include http/https): ").strip()
+        url = input("\nEnter the URL (include http/https): ").strip()
         while True:
             show_menu()
             choice = input("Enter your choice: ").strip()
@@ -58,6 +58,13 @@ def run_all_modules(url):
         print("\n[!] Program interrupted by user (CTRL+C).")
 
 def main():
+    banner = r"""
+ __      __   _    ___                      _           
+ \ \    / /__| |__| _ \___ __ ___ _ _  __ _| |_ ___ _ _ 
+  \ \/\/ / -_) '_ \   / -_) _/ _ \ ' \/ _` |  _/ _ \ '_|
+   \_/\_/\___|_.__/_|_\___\__\___/_||_\__,_|\__\___/_|  """
+    print(banner)
+
     parser = argparse.ArgumentParser(description="WebReconator - Web Reconnaissance Toolkit")
     parser.add_argument('-u', '--url', help='Target URL (include http/https) to run all modules')
     args = parser.parse_args()

@@ -13,7 +13,7 @@ def display_whois_info(whois_data):
         print("No WHOIS data to display.")
         return
 
-    print("\nWHOIS Information:")
+    print("\n[+] WHOIS Information:")
     try:
         print(f"Domain Name: {whois_data.domain_name}")
         print(f"Registrar: {whois_data.registrar}")

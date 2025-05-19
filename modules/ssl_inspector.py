@@ -77,7 +77,7 @@ def _sanitize_host(url: str) -> str:
 
 def ssl_inspect(host: str, port: int = 443) -> Dict[str, Any]:
     clean_host = _sanitize_host(host)
-    print(f"[*] Inspecting {clean_host}:{port} ...")
+    print(f"\n[+] Inspecting {clean_host}:{port} ...")
 
     try:
         cert_info = _get_certificate_info(clean_host, port)
@@ -86,7 +86,7 @@ def ssl_inspect(host: str, port: int = 443) -> Dict[str, Any]:
         print(e)
         return {}
 
-    print(f"\n[+] Supported Cipher Suites for {clean_host}:{port}:")
+    print(f"\n[-] Supported Cipher Suites for {clean_host}:{port}:")
     for cipher in ciphers:
         print(f"  - {cipher}")
 
